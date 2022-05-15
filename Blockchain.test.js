@@ -1,11 +1,10 @@
-const Blockchain = require('./blockchain');
-const Block = require('./block');
+const Blockchain = require('./Blockchain.js');
+const Block = require('./Block.js');
 
 describe('Blockchain', () => {
-  let bc, bc2;
+  let bc;
   beforeEach(() => {
     bc = new Blockchain;
-    bc2 = new Blockchain;
   });
 
   it('Create array with genesis first', () => {
@@ -19,19 +18,19 @@ describe('Blockchain', () => {
   });
 
   it('Validates a valid chain', () => {
-    bc2.addBlock("testing");
-    expect(bc.isValidChain(bc2.chain)).toBe(true);
+    bc.addBlock("testing");
+    expect(bc.isValidChain()).toBe(true);
   });
 
   it("Invalidates a chain with a corrupted block", () => {
-    bc2.chain[0].data = "testing again";
-    expect(bc.isValidChain(bc2.chain)).toBe(false);
+    bc.chain[0].data = "testing again";
+    expect(bc.isValidChain()).toBe(false);
   });
 
   it("Invalidades a chain with any block corrupted", () => {
-    bc2.addBlock("Anakin");
-    bc2.chain[1].data = "Luke";
+    bc.addBlock("123");
+    bc.chain[1].data = "12345";
 
-    expect(bc.isValidChain(bc2)).toBe(false);
+    expect(bc.isValidChain()).toBe(false);
   });
 })

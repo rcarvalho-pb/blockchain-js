@@ -1,4 +1,4 @@
-const Block = require('./block.js');
+const Block = require('./Block.js');
 
 class Blockchain{
   constructor(){
@@ -14,12 +14,12 @@ class Blockchain{
     return block;
   }
 
-  isValidChain(chain) {
-    if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) return false;
+  isValidChain() {
+    if (JSON.stringify(this.chain[0]) !== JSON.stringify(Block.genesis())) return false;
 
-    for (let i=1; i<chain.length; i++) {
-      const block = chain[i];
-      const lastBlock = chain[i-1];
+    for (let i = 1; i < this.chain.length; i++) {
+      const block = this.chain[i];
+      const lastBlock = this.chain[i-1];
 
       if (block.lastHash !== lastBlock.hash || block.hash !== Block.blockHash(block)) {
         return false;
