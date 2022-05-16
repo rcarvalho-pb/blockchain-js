@@ -1,8 +1,12 @@
-const Block = require("./Block");
-const Blockchain = require("./Blockchain");
+const Block = require("./blockchain/Block.js");
+const Blockchain = require("./Blockchain.js");
 
 bc = new Blockchain;
-bc.addBlock("Lebron")
-bc.chain[1] = "kobe"
+console.log(bc)
+bc2 = new Blockchain;
+bc2.addBlock("Oie");
+bc2.addBlock("Tchau")
+bc.replaceChain(bc2.chain);
 
-console.log(bc.isValidChain())
+console.log(bc.chain)
+console.log(bc2.chain)
