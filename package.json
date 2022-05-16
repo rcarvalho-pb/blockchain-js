@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "jest --watchALL",
-    "start": "nodemon ./app/index.js"
+    "start": "nodemon ./app",
+    "dev": "nodemon ./app"
   }
 }
